@@ -23,4 +23,12 @@ class ProduitController extends Controller
     public function formulaireProduit() {
     	return view('formulaire_produit');
     }
+
+    public function enregistrerProduit(Request $request){
+    	dump($request->all());
+    	dump($request->titre);
+    	dump($request->reference);
+    	dump($request->prix);
+    	dump($request->quantite);
+    }
 }

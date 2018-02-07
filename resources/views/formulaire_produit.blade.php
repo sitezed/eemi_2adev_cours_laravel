@@ -6,7 +6,7 @@
 
   <h1>Ajouter un produit</h1>
 <div class="col-sm-8">
-  <form action="" enctype="multipart/form-data">
+  <form action="{{ route('produit.enregistrer') }}" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="titre">Titre:</label>
     <input name="titre" type="text" class="form-control" id="titre">

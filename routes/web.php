@@ -18,6 +18,7 @@ Route::get('/', function () {
 /* creation de l'URL et appel via NomController@methodeDuController */
 Route::get('/produits', 'ProduitController@listeProduits');
 Route::get('/formulaire_produit', 'ProduitController@formulaireProduit');
+Route::post('/formulaire_produit', 'ProduitController@enregistrerProduit')->name('produit.enregistrer');
 
 Route::get('/articles', 'ArticleController@afficherArticles');
 

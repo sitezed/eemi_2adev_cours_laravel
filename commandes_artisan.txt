@@ -19,6 +19,20 @@ php artisan migrate
 -- le fichier est créé dans app/Produit.php
 php artisan make:model Produit
 
+A faire :
+- creer une migration articles (articles de blog)
+- creer les champs :
+id (clé primaire auto incremente)
+user_id (clé etrangère de User) (personne qui a créé l'article)
+titre ( type varchar, longueur 100)
+resume ( type text)
+contenu ( type text)
+photo_principale ( type varchar, longueur 50)
+categorie ( type enum, choix possible : sport, politique, cinema)
+date de creation
+date de modification
+>> renseigner des faux articles avec fausses photos directement dans la BDD
+- creer une page qui permette d'afficher tous les articles avec leur resumé et une photo miniature. Ceux-ci doivent être cliquables.
 
 
 

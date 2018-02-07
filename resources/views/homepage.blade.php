@@ -1,3 +1,4 @@
+{{-- extends nom_du_dossier.fichier_blade --}}
 @extends('structure.layout')
 
 @section('title','Accueil E-commerce')

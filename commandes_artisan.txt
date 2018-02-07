@@ -1,0 +1,24 @@
+-- pour changer le nom de son application
+php artisan app:name Eemi
+
+-- creer un controller (se trouvera dans app/Http/Controllers)
+php artisan make:controller ProduitController
+
+-- creer une table MySQL par convention au pluriel
+-- le fichier portant le nom [date]_create_produits_table.php est créé dans le dossier database/migrations
+php artisan make:migration create_produits_table --create=produits
+
+-- lancer la migration qui permet de creer les tables
+php artisan migrate
+
+-- si je desire revenir en arriere, j'utilise migrate:rollback
+-- precision : migrate:rollback, execute les methodes down() dans les fichiers de migrations. Tandis que migrate, execute les méthodes up()
+
+
+-- creation du Model rattaché à ma table, par convention le nom du model est au singulier, premiere lettre majuscule
+-- le fichier est créé dans app/Produit.php
+php artisan make:model Produit
+
+
+
+

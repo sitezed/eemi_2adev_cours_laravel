@@ -15,9 +15,8 @@ Route::get('/', function () {
     return view('homepage');
 });
 
-Route::get('/produits', function () {
-	return view('liste_produits');
-});
+/* creation de l'URL et appel via NomController@methodeDuController */
+Route::get('/produits', 'ProduitController@listeProduits');
 
 
 // je desire afficher le fichier /resources/views/exemple/affichage.blade.php

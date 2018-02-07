@@ -11,7 +11,9 @@ class ProduitController extends Controller
     public function listeProduits(){
 
     	// je recupere tous les produits
-    	$data['produits'] = Produit::all();
+    	$data['okok'] = 'nimporte quoi';
+    	$data['okok2'] = 'nimporte quoi encore';
+    	$data['produits'] = Produit::all(); // j'envoie tous le sproduits, et chaque produit devient un objet PHP dont les propriétés sont les champs de la table Produits
 
     	// je les envois à la vue
     	return view('liste_produits', $data);

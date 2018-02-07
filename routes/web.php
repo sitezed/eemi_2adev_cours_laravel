@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 /* creation de l'URL et appel via NomController@methodeDuController */
 Route::get('/produits', 'ProduitController@listeProduits');
+Route::get('/formulaire_produit', 'ProduitController@formulaireProduit');
+
 Route::get('/articles', 'ArticleController@afficherArticles');
 
 

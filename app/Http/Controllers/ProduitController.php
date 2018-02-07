@@ -18,4 +18,9 @@ class ProduitController extends Controller
     	// je les envois à la vue
     	return view('liste_produits', $data);
     }
+
+
+    public function formulaireProduit() {
+    	return view('formulaire_produit');
+    }
 }

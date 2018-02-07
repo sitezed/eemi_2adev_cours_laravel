@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 /* creation de l'URL et appel via NomController@methodeDuController */
 Route::get('/produits', 'ProduitController@listeProduits');
+Route::get('/articles', 'ArticleController@afficherArticles');
 
 
 // je desire afficher le fichier /resources/views/exemple/affichage.blade.php

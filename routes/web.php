@@ -21,6 +21,8 @@ Route::get('/formulaire_produit', 'ProduitController@formulaireProduit');
 Route::post('/formulaire_produit', 'ProduitController@enregistrerProduit')->name('produit.enregistrer');
 
 Route::get('/articles', 'ArticleController@afficherArticles');
+Route::get('/formulaire_article', 'ArticleController@formulaireArticle');
+Route::post('/formulaire_article', 'ArticleController@formulaireArticle')->name('article.enregistrer');
 
 
 // je desire afficher le fichier /resources/views/exemple/affichage.blade.php

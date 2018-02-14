@@ -45,3 +45,14 @@ php artisan route:list
 php artisan make:request ProduitRequest
 
 
+=====================================================================================
+A faire 2 :
+- appliquer les regles suivantes au formulaire produit :
+> Titre de type stirng compris entre 3 et 25 caractères
+> Reference unique
+> Prix de type integer / float
+> Quantite de type integer
+> Description de type alpha numerique avec un minimum de 5 caractères
+
+=====================================================================================
+

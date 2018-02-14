@@ -4,6 +4,16 @@
 
 @section('contenu')
 
+  @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+
   <h1>Ajouter un produit</h1>
 <div class="col-sm-8">
   <form action="{{ route('produit.enregistrer') }}" method="POST" enctype="multipart/form-data">

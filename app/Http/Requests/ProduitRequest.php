@@ -23,8 +23,11 @@ class ProduitRequest extends FormRequest
      */
     public function rules()
     {
+      // à gauche, les names du formulaire, à droite la règle à donner
+      // name_formulaire => règle
         return [
-            //
+            'titre' => 'string|between:3,25', // je desire un type string de 3 à 25 caractères
+            'reference' => 'unique:produits,reference' // je souhaite que le name reference soit unique
         ];
     }
 }

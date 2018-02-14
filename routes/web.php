@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/produits', 'ProduitController@listeProduits')->name('produit.liste');
 Route::get('/formulaire_produit', 'ProduitController@formulaireProduit');
 Route::post('/formulaire_produit', 'ProduitController@enregistrerProduit')->name('produit.enregistrer');
+Route::get('/produit/delete/{id}', 'ProduitController@supprimerProduit')->name('produit.suppression');
 
 Route::get('/articles', 'ArticleController@afficherArticles')->name('article.liste');
 Route::get('/formulaire_article', 'ArticleController@formulaireArticle');

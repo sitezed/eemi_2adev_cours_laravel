@@ -4,22 +4,43 @@
 
 @section('contenu')
 
-  <h1>Liste des produits</h1>
-
-  {{ $okok }}
-  <hr>
-  @foreach($produits as $key => $value)
-    {{ $value->id }}<br>
-    {{ $value->titre }}<br>
-    {{ $value->reference }}<br>
-    {{ $value->slug }}<br>
-    {{ $value->photo }}<br>
-    {{ $value->prix }}<br>
-    {{ $value->quantite }}<br>
-    {{ $value->description }}<br>
-    {{ $value->created_at }}<br>
-    {{ $value->updated_at }}<br>
-    ================================================================ <br>
-  @endforeach
+  <h2>Tableau des produits</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <!-- ici nous affichons les tritres de notre Table HTML, en nous basant sur les titres du 1er array PHP dans l'indice 0 -->
+      <th>id</th>
+      <th>titre</th>
+      <th>reference</th>
+      <th>prix</th>
+      <th>photo</th>
+      <th>quantite</th>
+      <th>Mod</th>
+      <th>Suppr</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($produits as $key => $value)
+    <tr>
+      <td>{{ $value->id }}</td>
+      <td>{{ $value->titre }}</td>
+      <td>{{ $value->reference }}</td>
+      <td>{{ $value->prix  }}</td>
+      <td><img width="100" src="{{ asset('stockage/photos/' . $value->photo) }}" alt=""></td>
+      <td>{{ $value->quantite  }}</td>
+      <td>
+        <a href="">
+          <i class="fa fa-pencil"></i>
+        </a>
+      </td>
+      <td>
+        <a onclick="return confirm('T sûr ??')" href="{{ route('produit.suppression', $value->id) }}">
+          <i class="fa fa-trash"></i>
+        </a>
+      </td>
+    </tr>
+    @endforeach
+    </tbody>
+  </table>
 
 @endsection

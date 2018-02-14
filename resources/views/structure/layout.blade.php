@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+      <link href="{{ asset('fontawesome/web-fonts-with-css/css/fontawesome-all.min.css') }}" rel="stylesheet">
 
       {{-- la fonction asset() permet d'appeler des fichiers JS, CSS ou images.. en prenant pour racine e dossier public --}}
       <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">

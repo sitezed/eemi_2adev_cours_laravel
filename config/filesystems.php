@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+    // nous modifions le disk virtuel a defaut. Remplacé par public_perso
+    'default' => env('FILESYSTEM_DRIVER', 'public_perso'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,6 +54,14 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+        ],
+
+      // nous configurons un disk virtuel perso. Puis nous l'indiquerons en tant que disk par defaut (plus haut dans ce fichier)
+        'public_perso' => [
+          'driver' => 'local', // notre dossier va pointer vers le driver local, cad dans un dossier de notre PC (nous pourrions utiliser un autre driver, exemple : S3 (amazon), Dropbox, FTP etc...
+          'root' => public_path('stockage'), // chemin de notre dossier. public_path est une fonction qui pointe vers le dossier public/. A laquelle j'ajoute le dossier stockage, ce qui donne /chemin_racine/public/stockage
+          'url' => asset('stockage'), // URL pointant vers notre dossier stockage. asset() est la fonction predefinie qui donne http://votre_chemin/public/
+          'visibility' => 'public',
         ],
 
         's3' => [

@@ -18,7 +18,7 @@ php artisan migrate
 -- creation du Model rattaché à ma table, par convention le nom du model est au singulier, premiere lettre majuscule
 -- le fichier est créé dans app/Produit.php
 php artisan make:model Produit
-
+=====================================================================================
 A faire :
 - creer une migration articles (articles de blog)
 - creer les champs :
@@ -34,5 +34,13 @@ date de modification
 >> renseigner des faux articles avec fausses photos directement dans la BDD
 - creer une page qui permette d'afficher tous les articles avec leur resumé et une photo miniature. Ceux-ci doivent être cliquables.
 
+=====================================================================================
+
+-- afficher les routes de son application
+php artisan route:list
+
+-- Creer une classe pour filtrer les entrées de notre formulaire
+-- cela va permettre de verifier les données envoyées par l'internaute avant de les enregistrer (exemple : message -> la reference doit etre unique)
+php artisan make:request ProduitRequest
 
 

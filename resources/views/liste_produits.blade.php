@@ -7,7 +7,7 @@
   <h1>Liste des produits</h1>
 
   {{ $okok }}
-
+  <hr>
   @foreach($produits as $key => $value)
     {{ $value->id }}<br>
     {{ $value->titre }}<br>
@@ -19,6 +19,7 @@
     {{ $value->description }}<br>
     {{ $value->created_at }}<br>
     {{ $value->updated_at }}<br>
+    ================================================================ <br>
   @endforeach
 
 @endsection

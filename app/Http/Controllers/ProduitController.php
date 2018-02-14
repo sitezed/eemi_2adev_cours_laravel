@@ -2,6 +2,7 @@
 
 namespace Eemi\Http\Controllers;
 
+use Eemi\Http\Requests\ProduitRequest;
 use Eemi\Produit;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class ProduitController extends Controller
     	return view('formulaire_produit');
     }
 
-    public function enregistrerProduit(Request $request){
+    public function enregistrerProduit(ProduitRequest $request){
     	dump($request->all());
     	dump($request->titre);
     	dump($request->reference);

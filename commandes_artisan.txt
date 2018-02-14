@@ -41,6 +41,7 @@ php artisan route:list
 
 -- Creer une classe pour filtrer les entrées de notre formulaire
 -- cela va permettre de verifier les données envoyées par l'internaute avant de les enregistrer (exemple : message -> la reference doit etre unique)
+-- cela a pour effet de créer un fichier app/Http/ProduitRequest
 php artisan make:request ProduitRequest
 
 

@@ -32,17 +32,17 @@
         <input name="titre" type="text" class="form-control" id="titre">
       </div>
       <div class="form-group">
-        <label for="resume">Reference:</label>
-        <input name="resume" type="text" class="form-control" id="reference">
+        <label for="resume">Resume:</label>
+        <input name="resume" type="text" class="form-control" id="resume">
       </div>
       <div class="form-group">
-        <label for="contenu">Reference:</label>
-        <input name="contenu" type="text" class="form-control" id="reference">
+        <label for="contenu">Contenu</label>
+        <textarea name="contenu" class="form-control" id="contenu"></textarea>
       </div>
 
       <div class="form-group">
         <label for="photo_principale">Photo:</label>
-        <input name="photo_principale" type="file" class="form-control" id="photo">
+        <input name="photo_principale" type="file" class="form-control" id="photo_principale">
       </div>
 
       <div class="form-group">

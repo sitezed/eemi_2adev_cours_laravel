@@ -55,4 +55,5 @@ A faire 2 :
 > Description de type alpha numerique avec un minimum de 5 caractères
 
 =====================================================================================
-
+-- installation de la debugbar
+composer require barryvdh/laravel-debugbar --dev

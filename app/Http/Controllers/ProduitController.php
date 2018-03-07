@@ -77,7 +77,7 @@ class ProduitController extends Controller
 
       if(!is_null($produitASupprimer)) {
         $suppression = $produitASupprimer->delete();
-        if($suppression) {
+        if($suppression && is_file($produitASupprimer->photo)) {
           Storage::disk('public_perso')->delete('photos/' . $produitASupprimer->photo);
           return redirect()->route('produit.liste');
         }

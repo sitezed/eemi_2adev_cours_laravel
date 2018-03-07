@@ -8,6 +8,11 @@
   <table class="table">
     <thead>
     <tr>
+      <td>
+        <a href="{{ route('produit.nouveau') }}">+ nouveau produit</a>
+      </td>
+    </tr>
+    <tr>
       <!-- ici nous affichons les tritres de notre Table HTML, en nous basant sur les titres du 1er array PHP dans l'indice 0 -->
       <th>id</th>
       <th>titre</th>
@@ -29,8 +34,8 @@
       <td><img width="100" src="{{ asset('stockage/photos/' . $value->photo) }}" alt=""></td>
       <td>{{ $value->quantite  }}</td>
       <td>
-        <a href="">
-          <i class="fa fa-pencil"></i>
+        <a href="{{ route('produit.modifier', $value->id) }}">
+          <i class="fa fa-edit"></i>
         </a>
       </td>
       <td>

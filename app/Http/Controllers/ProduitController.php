@@ -4,6 +4,7 @@ namespace Eemi\Http\Controllers;
 
 use Eemi\Http\Requests\ProduitRequest;
 use Eemi\Produit;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -24,7 +25,8 @@ class ProduitController extends Controller
 
 
     public function formulaireProduit() {
-    	return view('formulaire_produit');
+      $data['action'] = 'ajouter';
+    	return view('formulaire_produit', $data);
     }
 
     public function enregistrerProduit(ProduitRequest $request){
@@ -42,6 +44,7 @@ class ProduitController extends Controller
     	$produit->reference = $request->reference;
     	$produit->prix = $request->prix;
     	$produit->quantite = $request->quantite;
+    	$produit->description = $request->description;
 
     	// j'enregistre le produit en BDD
     	$produit->save();
@@ -73,16 +76,80 @@ class ProduitController extends Controller
 
     public function supprimerProduit($id){
 
-      $produitASupprimer = Produit::find($id);
+      try{
+        // je tente de trouver le produit que je veux supprimer
+        $produitASupprimer = Produit::findOrFail($id);
+      } catch(ModelNotFoundException $e) {
+        // si je ne le trouve pas, je tombe dans une exception (fail)
+        // je declenche un message flash error
+        flash('Produit introuvable')->error();
+        // je redirige vers la page liste des produits
+        return redirect()->route('produit.liste');
+      }
 
+      // si le produit existe bien (n'est pas null)
       if(!is_null($produitASupprimer)) {
         $suppression = $produitASupprimer->delete();
-        if($suppression && is_file($produitASupprimer->photo)) {
-          Storage::disk('public_perso')->delete('photos/' . $produitASupprimer->photo);
-          return redirect()->route('produit.liste');
+        // si il y a bien eu suppression de produit
+        if($suppression) {
+          // si le fichier photo existe bien
+          if(is_file(public_path('/stockage/photos/' . $produitASupprimer->photo))) {
+            // je supprime la photo
+            Storage::disk('public_perso')->delete('photos/' . $produitASupprimer->photo);
+          }
+          // message confirmant la suppression du produit
+          flash('Produit '. $produitASupprimer->titre . ' supprimé avec succès')->success();
+        } else {
+          // s'il n'y a pas eu de suppression, message d'erreur
+          flash('Erreur lors de la suppression du produit')->error();
         }
       }
 
+      // redirection vers la liste des produits
+      return redirect()->route('produit.liste');
+
+    }
+
+
+    public function formulaireModifierProduit($id){
+      $data['action'] = 'modifier';
+        try{
+          $data['produitAmodifier'] = Produit::findOrFail($id);
+        } catch(ModelNotFoundException $e) {
+          flash('Produit introuvable')->error();
+          return redirect()->route('produit.liste');
+        }
+
+        return view('formulaire_produit', $data);
+
+    }
+
+    public function modifierProduit($id, Request $request) {
+
+      try{
+        $produit = Produit::findOrFail($id);
+      } catch(ModelNotFoundException $e) {
+        flash('Produit introuvable')->error();
+      return redirect()->route('produit.liste');
+      }
+
+      $produit->titre = $request->titre;
+      $produit->reference = $request->reference;
+      if($request->hasFile('photo')) {
+        Storage::putFileAs('photos', $request->file('photo'), $request->photo);
+      }
+      $produit->photo = $request->photo;
+      $produit->prix = $request->prix;
+      $produit->description = $request->description;
+      $produit->quantite = $request->quantite;
+
+      $update = $produit->update();
+
+      if($update) {
+        flash('Produit '. $produit->titre . ' modifié avec succès')->success();
+      }
+
+      return redirect()->route('produit.liste');
 
     }
 

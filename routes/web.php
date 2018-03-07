@@ -17,9 +17,12 @@ Route::get('/', function () {
 
 /* creation de l'URL et appel via NomController@methodeDuController */
 Route::get('/produits', 'ProduitController@listeProduits')->name('produit.liste');
-Route::get('/formulaire_produit', 'ProduitController@formulaireProduit');
+Route::get('/formulaire_produit', 'ProduitController@formulaireProduit')->name('produit.nouveau');
 Route::post('/formulaire_produit', 'ProduitController@enregistrerProduit')->name('produit.enregistrer');
 Route::get('/produit/delete/{id}', 'ProduitController@supprimerProduit')->name('produit.suppression');
+// route pour modifier un produit
+Route::get('/produit/modifier/{id}', 'ProduitController@formulaireModifierProduit')->name('produit.modifier');
+Route::post('/produit/modifier/{id}', 'ProduitController@modifierProduit');
 
 Route::get('/articles', 'ArticleController@afficherArticles')->name('article.liste');
 Route::get('/formulaire_article', 'ArticleController@formulaireArticle');
